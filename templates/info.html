@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Max Messenger — Добро пожаловать!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .welcome-container {
+            width: 100%;
+            max-width: 700px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 30px 20px;
+            background: #667eea;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .content h2 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .features {
+            margin-bottom: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-text h3 {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .feature-text p {
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .cta {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #5a67d8;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+            font-size: 12px;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-container">
+        <div class="header">
+            <h1>Max Messenger</h1>
+            <p>Современный мессенджер для общения без границ</p>
+        </div>
+        <div class="content">
+            <h2>О нашем мессенджере</h2>
+            <div class="features">
+                <div class="feature-item">
+                    <div class="feature-icon">1</div>
+                    <div class="feature-text">
+                        <h3>Быстрая передача сообщений</h3>
+                        <p>Сообщения доставляются за доли секунды благодаря оптимизированным серверам и алгоритмам сжатия данных.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">2</div>
+                    <div class="feature-text">
+                        <h3>Сквозное шифрование</h3>
+                        <p>Все переписки защищены надёжным шифрованием — ваши данные доступны только вам и вашим собеседникам.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">3</div>
+                    <div class="feature-text">
+                        <h3>Мультиплатформенность</h3>
+                        <p>Работайте с Max Messenger на любом устройстве: смартфоне, планшете или компьютере. Синхронизация в реальном времени.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">4</div>
+                    <div class="feature-text">
+                        <h3>Богатые возможности</h3>
+                        <p>Отправляйте фото, видео, голосовые сообщения, документы. Создавайте групповые чаты до 1000 участников.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cta">
+                <a href="/login" class="btn">Начать общение</a>
+            </div>
+        </div>
+        <div class="footer">
+            © 2026 Max Messenger. Все права защищены.
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</html>
