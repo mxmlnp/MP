@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #f8fafc;
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Шапка личного кабинета */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-weight: 700;
+            color: #2563eb;
+            font-size: 20px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .username {
+            font-weight: 600;
+            color: #334155;
+        }
+
+        .balance {
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .btn-logout {
+            color: #ef4444;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .btn-logout:hover {
+            background: #ffeeef;
+        }
+
+        /* Главный контейнер */
+        main {
+            flex: 1;
+            max-width: 800px;
+            width: 100%;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .welcome-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        /* Поле для нейросети (заготовка) */
+        .ai-container {
+            margin-top: 10px;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 20px;
+        }
+
+        .ai-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .ai-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        textarea {
+            flex: 1;
+            padding: 12px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 15px;
+            resize: none;
+            height: 50px;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: #ffffff;
+        }
+
+        .btn-ai {
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 0 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-ai:hover {
+            background: #1d4ed8;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Панель управления</div>
+        <div class="user-info">
+            <!-- Сюда Flask автоматически подставит имя и баланс из сессии/БД -->
+            <span class="username">👤 {{ session.get('user_name', 'Гость') }}</span>
+            <span class="balance">💰 Баланс: {{ session.get('user_balance', 0) }} руб.</span>
+            <a href="/logout" class="btn-logout">Выйти</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="welcome-card">
+            <h2>Добро пожаловать, {{ session.get('user_name', 'пользователь') }}!</h2>
+            
+            <!-- Заготовка для нейросети -->
+            <div class="ai-container">
+                <label class="ai-label" for="ai-request">Запрос к нейросети (заготовка):</label>
+                <div class="ai-input-group">
+                    <textarea id="ai-request" placeholder="Введите ваш промпт здесь..."></textarea>
+                    <button class="btn-ai" onclick="alert('Модуль нейросети будет подключен позже!')">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

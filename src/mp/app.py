@@ -63,6 +63,9 @@ def user_reg():
         cur.close()
         cnx.close()
 
+# ========================================================
+# 1. ОБНОВЛЕННЫЙ РОУТ АВТОРИЗАЦИИ (записывает данные в сессию)
+# ========================================================
 @app.route("/user_authorization", methods=['POST'])
 def user_login():
     req = request.get_json()
@@ -78,19 +81,35 @@ def user_login():
         
         cur.execute("SELECT * FROM users WHERE email = %s", (email,))
         user = cur.fetchone()
-        
         if user and check_password_hash(user['password'], password):
+            # Сохраняем данные пользователя в сессию Flask
             session['user_id'] = user['id']
             session['user_name'] = user['name']
+            
+            # Если у вас в таблице пока нет столбца balance, 
+            # код автоматически поставит заглушку 500 рублей, чтобы ничего не ломалось
+            session['user_balance'] = user.get('balance', 500) 
+            
             return jsonify({"success": True})
         else:
             return jsonify({"error": "Неверный email или пароль"}), 401
             
-    except mysql.connector.Error as err:
-        return jsonify({"error": f"Ошибка базы данных: {err}"}), 500
+    except Exception as err:
+        return jsonify({"error": f"Ошибка базы данных: {str(err)}"}), 500
     finally:
-        cur.close()
-        cnx.close()
+        if 'cur' in locals(): cur.close()
+        if 'cnx' in locals(): cnx.close()
+
+
+# ========================================================
+# 2. НОВЫЙ РОУТ ДЛЯ ЛИЧНОГО КАБИНЕТА
+# ========================================================
+@app.route("/lk")
+def lk():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+    return render_template('lk.html')
+
 
 @app.route("/logout")
 def logout():

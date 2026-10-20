@@ -77,7 +77,7 @@ $(document).ready(function () {
         })
         .done(function () {
             alert("Вы успешно вошли в систему!");
-            window.location.href = "/"; 
+            window.location.href = "/lk"; 
         })
         .fail(function (xhr) {
             alert((xhr.responseJSON && xhr.responseJSON.error) || "Ошибка авторизации");
